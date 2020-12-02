@@ -1,0 +1,33 @@
+### Pro Soccer Signing Interview ###
+
+# Heading
+print("B A L T I M O R E   K I N G S\n")
+
+# Welcome the new player
+print("Congratulations on signing with the Baltimore Kings Pro Soccer Club!\n")
+print("Let's get started on some paperwork.\n")
+
+# Collect first name
+player_fname = input("What is your first name?\n")
+print("\nThanks " + player_fname +".\n")
+
+# Collect last name
+player_lname = input("What is your last name?\n")
+print("\nOkay great. We will make sure to print " + player_lname + " on the back of your jersey.\n")
+
+# Collect age
+age = int(input("How old are you?\n"))
+expected_age = age - 2
+print("\nOh wow. I would've guessed " + str(expected_age) + ".\n")
+
+# Collect jersey number
+jersey_num = int(input("What jersey number would you like?\n"))
+num_available = jersey_num + 1
+print("\nWe don't have #" + str(jersey_num) + " available, but we do have #" + str(num_available) + ".\n")
+
+# Collect position
+position = input("What position do you play?\n")
+print("\nOkay great! We definitely need another " + position + ".\n")
+
+# Closing
+print("I think we are all set for now! Once again, welcome to the club. If you need anything let me know!")
