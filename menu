@@ -1,0 +1,68 @@
+from tkinter import *
+
+root = Tk()
+root.title("Mr. Danza's PB&J Shop")
+root.geometry("300x300")
+
+order_items = []
+
+total_price = 0
+
+def choose_grape():
+    GRAPE_PRICE = 3.75
+    global total_price
+    total_price = total_price + GRAPE_PRICE
+    label2.config(text="%.2f" %total_price)
+    order_items.append("PBJ Grape")
+    items_ordered.config(text=order_items)
+
+def choose_strawberry():
+    STRAW_PRICE = 4.25
+    global total_price
+    total_price = total_price + STRAW_PRICE
+    label2.config(text="%.2f" %total_price)
+    order_items.append("PBJ Strawberry")
+    items_ordered.config(text=order_items)
+
+def choose_blackberry():
+    BLACKB_PRICE = 4.50
+    global total_price
+    total_price = total_price + BLACKB_PRICE
+    label2.config(text="%.2f" %total_price)
+    order_items.append("PBJ Blackberry")
+    items_ordered.config(text=order_items)
+
+def order_complete():
+    global total_price
+    order_output.config(text="Your total is: $%.2f" %total_price)
+
+def restart():
+    global total_price
+    total_price = 0
+    label2.config(text="%.2f" %total_price)
+    order_items.clear()
+    items_ordered.config(text=order_items)
+    order_output.config(text="")
+    
+    
+label1 = Label(root, text="Menu Options")
+grape = Button(root, text="PBJ Grape", command=choose_grape)
+strawberry = Button(root, text="PBJ Strawberry", command=choose_strawberry)
+blackberry = Button(root, text="PBJ Blackberry", command=choose_blackberry)
+label2 = Label(root, text="%.2f" %total_price)
+total = Button(root, text="Complete", command=order_complete)
+order_output = Label(root)
+items_ordered = Label(root)
+restart = Button(root, text="Restart", command=restart)
+
+label1.pack()
+grape.pack()
+strawberry.pack()
+blackberry.pack()
+label2.pack()
+total.pack()
+order_output.pack()
+items_ordered.pack()
+restart.pack()
+
+root.mainloop()
