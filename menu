@@ -1,68 +1,73 @@
+#import modules
 from tkinter import *
 
-root = Tk()
-root.title("Mr. Danza's PB&J Shop")
-root.geometry("300x300")
-
-order_items = []
-
+#initialize variables
 total_price = 0
 
-def choose_grape():
-    GRAPE_PRICE = 3.75
+#define functions
+def gpbj_selected():
     global total_price
-    total_price = total_price + GRAPE_PRICE
-    label2.config(text="%.2f" %total_price)
-    order_items.append("PBJ Grape")
-    items_ordered.config(text=order_items)
+    GPBJ_PRICE = 3.75
+    total_price += GPBJ_PRICE
+    current_total_lbl.config(text="$%.2f" %total_price)
 
-def choose_strawberry():
-    STRAW_PRICE = 4.25
+def spbj_selected():
     global total_price
-    total_price = total_price + STRAW_PRICE
-    label2.config(text="%.2f" %total_price)
-    order_items.append("PBJ Strawberry")
-    items_ordered.config(text=order_items)
+    SPBJ_PRICE = 4.25
+    total_price += SPBJ_PRICE
+    current_total_lbl.config(text="$%.2f" %total_price)
 
-def choose_blackberry():
-    BLACKB_PRICE = 4.50
+def ccc_selected():
     global total_price
-    total_price = total_price + BLACKB_PRICE
-    label2.config(text="%.2f" %total_price)
-    order_items.append("PBJ Blackberry")
-    items_ordered.config(text=order_items)
+    CCC_PRICE = 1.89
+    total_price += CCC_PRICE
+    current_total_lbl.config(text="$%.2f" %total_price)
 
-def order_complete():
+def coffee_selected():
     global total_price
-    order_output.config(text="Your total is: $%.2f" %total_price)
+    COFFEE_PRICE = 0.99
+    total_price += COFFEE_PRICE
+    current_total_lbl.config(text="$%.2f" %total_price)
 
-def restart():
+def order_completed():
+    global total_price
+    total_price *= 1.06 #6% tax
+    final_total_lbl.config(text="Your total today is $%.2f." %total_price)
+
+def reset_order():
     global total_price
     total_price = 0
-    label2.config(text="%.2f" %total_price)
-    order_items.clear()
-    items_ordered.config(text=order_items)
-    order_output.config(text="")
-    
-    
-label1 = Label(root, text="Menu Options")
-grape = Button(root, text="PBJ Grape", command=choose_grape)
-strawberry = Button(root, text="PBJ Strawberry", command=choose_strawberry)
-blackberry = Button(root, text="PBJ Blackberry", command=choose_blackberry)
-label2 = Label(root, text="%.2f" %total_price)
-total = Button(root, text="Complete", command=order_complete)
-order_output = Label(root)
-items_ordered = Label(root)
-restart = Button(root, text="Restart", command=restart)
+    current_total_lbl.config(text="$%.2f" %total_price)
+    final_total_lbl.config(text="")
 
-label1.pack()
-grape.pack()
-strawberry.pack()
-blackberry.pack()
-label2.pack()
-total.pack()
-order_output.pack()
-items_ordered.pack()
-restart.pack()
+#main window setup
+root = Tk() #create main window
+root.title("DANZA PBJ - Order Screen") #set title of window
+root.geometry("320x200") #set size of window
 
+
+#creating buttons
+grape_pbj_btn = Button(root, text="Grape PBJ", command=gpbj_selected, bg="purple", fg="white")
+strawberry_pbj_btn = Button(root, text="Strawberry PBJ", command=spbj_selected, bg="red", fg="white")
+chocchip_cookie_btn = Button(root, text="Choc Chip Cookie", command=ccc_selected, bg="black", fg="white")
+coffee_btn = Button(root, text="Coffee", command=coffee_selected, bg="brown", fg="white")
+order_complete_btn = Button(root, text="Complete", command=order_completed, bg="green", fg="white")
+reset_btn = Button(root, text="Reset", command=reset_order)
+
+#creating labels
+current_total_lbl = Label(root, text="$0.00")
+final_total_lbl = Label(root)
+
+#adding widgets to main window (buttons, labels, etc.) 
+current_total_lbl.pack()
+grape_pbj_btn.pack()
+strawberry_pbj_btn.pack()
+chocchip_cookie_btn.pack()
+coffee_btn.pack()
+order_complete_btn.pack()
+final_total_lbl.pack()
+reset_btn.pack()
+
+#keep window up and running
 root.mainloop()
+
