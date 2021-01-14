@@ -29,23 +29,18 @@ def check_winner(cpu, player):
 
 def stats_update():
     stats_lbl.configure(text=f"Wins: {stats['wins']} \
-Losses: {stats['losses']} Ties: {stats['ties']}")
+    Losses: {stats['losses']} Ties: {stats['ties']}")
         
 rock_btn = Button(root, text="Rock", command=lambda: throw(choices[0]))
 paper_btn = Button(root, text="Paper", command=lambda: throw(choices[1]))
 scissors_btn = Button(root, text="Scissors", command=lambda: throw(choices[2]))
-
 result_lbl = Label(root, text="Shoot!")
-stats_lbl = Label(root, text=f"Wins: {stats['wins']} \
-Losses: {stats['losses']} Ties: {stats['ties']}")
+stats_lbl = Label(root, text=f"Wins: {stats['wins']} Losses: {stats['losses']} Ties: {stats['ties']}")
 
 result_lbl.grid(row=0,columnspan=3)
-
 rock_btn.grid(row=1,column=0)
 paper_btn.grid(row=1,column=1)
 scissors_btn.grid(row=1,column=2)
-
 stats_lbl.grid(row=2,columnspan=3)
 
 root.mainloop()
-
