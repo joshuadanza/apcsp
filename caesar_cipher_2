@@ -1,0 +1,20 @@
+letters = "abcdefghijklmnopqrstuvwxyz"
+
+def encrypt(k, m):
+    final_message = ""
+    for i in m:
+        if i in letters:
+            new = letters.find(i) + k
+            while new > 25:
+                new -= 26
+            final_message = final_message + letters[new]
+        else:
+            final_message = final_message + str(i)
+    return final_message
+
+message = input("Type a message to be encrypted")
+key = int(input("What is the key?"))
+
+x = encrypt(key, message)
+
+print(x)
