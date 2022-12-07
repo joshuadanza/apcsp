@@ -1,0 +1,31 @@
+SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz "
+MAX_KEY_SIZE = len(SYMBOLS)
+
+def get_translated_message(mode, message, key):
+  translated = ""
+
+  if mode == "decrypt":
+    key = -key
+
+  for i in message:
+    symbol_index = SYMBOLS.find(i)
+    symbol_index += key
+
+    if symbol_index >= len(SYMBOLS):
+      symbol_index -= len(SYMBOLS)
+    elif symbol_index < 0:
+      symbol_index += len(SYMBOLS)
+    translated += SYMBOLS[symbol_index]
+      
+  return translated
+
+mode = input("Do you wish to encrypt or decrypt a message?")
+mode = mode.lower()
+
+message = input("Enter your message:\n")
+
+key = 0
+key = int(input("Enter the key number (1-%s)" %MAX_KEY_SIZE))
+            
+print("Your translated text is:")
+print(get_translated_message(mode, message, key))
