@@ -18,7 +18,8 @@ def get_message():
 def get_key():
     key = 0
     while True:
-        key = int(input("Enter the key number (1-%s)" %MAX_KEY_SIZE))
+        #key = int(input("Enter the key number (1-%s)" %MAX_KEY_SIZE))
+        key = int(input(f"Enter the key number (1-{MAX_KEY_SIZE})")
 
         if key >= 1 and key <= MAX_KEY_SIZE:
             return key
